@@ -9,9 +9,7 @@ servers:
 
 tags:
   - name: LabWork Service
-    description: Operations for managing the LabWork collection
   - name: Bars Service
-    description: Additional discipline-related operations (base URL /bars)
 
 components:
   schemas:
@@ -279,7 +277,6 @@ paths:
       tags:
         - LabWork Service
       summary: Create a new Lab Work
-      description: Adds a new Lab Work to the collection. The id and creationDate fields are generated automatically and must not be provided in the request body.
       requestBody:
         required: true
         content:
@@ -320,7 +317,6 @@ paths:
       tags:
         - LabWork Service
       summary: Get Lab Work by ID
-      description: Returns a single Lab Work identified by its unique id.
       responses:
         '200':
           description: The requested Lab Work
@@ -339,7 +335,6 @@ paths:
       tags:
         - LabWork Service
       summary: Update an existing Lab Work
-      description: Fully replaces all updatable fields of the Lab Work identified by labWorkId. The id and creationDate fields are ignored in the request body.
       requestBody:
         required: true
         content:
@@ -370,7 +365,6 @@ paths:
       tags:
         - LabWork Service
       summary: Delete a Lab Work
-      description: Removes the Lab Work identified by labWorkId from the collection.
       responses:
         '204':
           description: Lab Work deleted successfully
@@ -386,7 +380,6 @@ paths:
       tags:
         - LabWork Service
       summary: Get Lab Work with minimum averagePoint
-      description: Returns any one Lab Work whose averagePoint value is the minimum across the entire collection.
       responses:
         '200':
           description: The Lab Work with the minimum averagePoint value
@@ -406,7 +399,6 @@ paths:
       tags:
         - LabWork Service
       summary: Count Lab Works by difficulty
-      description: Returns the total number of Lab Works whose difficulty field exactly equals the specified value.
       parameters:
         - name: difficultyValue
           description: The difficulty value to match
@@ -440,9 +432,6 @@ paths:
       tags:
         - LabWork Service
       summary: Get Lab Works with difficulty less than given value
-      description: >
-        Returns an array of Lab Works whose difficulty is strictly less than the specified value.
-        The enum order is: EASY < NORMAL < HARD < INSANE < HOPELESS.
       parameters:
         - name: difficultyValue
           description: The difficulty threshold; only Lab Works with a strictly lower difficulty are returned
@@ -471,9 +460,6 @@ paths:
       tags:
         - Bars Service
       summary: Remove a Lab Work from a discipline program
-      description: >
-        Removes the specified Lab Work from the program of the specified discipline.
-        This operation is part of the Bars service located at /bars and delegates to the LabWork Service API.
       servers:
         - url: https://bars.server.lab
           description: Bars Service (base URL /bars)
@@ -509,10 +495,6 @@ paths:
       tags:
         - Bars Service
       summary: Add 10 hardest Lab Works to a discipline program
-      description: >
-        Adds the 10 most difficult Lab Works (those with the highest difficulty level)
-        to the program of the specified discipline.
-        This operation is part of the Bars service located at /bars and uses the LabWork Service API to retrieve Lab Works.
       servers:
         - url: https://bars.server.lab
           description: Bars Service (base URL /bars)
