@@ -403,7 +403,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /discipline/{disciplineId}/labwork/{labworkId}/remove:
+  /discipline/{disciplineId}/remove-labwork:
     post:
       tags:
         - Bars Service
@@ -422,7 +422,7 @@ paths:
             minimum: 1
         - name: labworkId
           description: Unique identifier of the Lab Work to remove from the discipline
-          in: path
+          in: query
           required: true
           schema:
             type: integer
